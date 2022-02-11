@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloud-common" />
+        <module name="ali-nacos-sentinel-seata-account8094" />
+        <module name="ali-nacos-sentinel-seata-storage8095" />
+        <module name="ali-nacos-sentinel-seata-order8093" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

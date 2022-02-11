@@ -1,0 +1,5 @@
+# Project exclude paths
+/ali-nacos-sentinel-seata-account8094/target/
+/ali-nacos-sentinel-seata-order8093/target/
+/ali-nacos-sentinel-seata-storage8095/target/
+/cloud-common/target/
