@@ -5,6 +5,7 @@ import com.zhl.springcloud2020.common.entities.Storage;
 import com.zhl.storage.mapper.StorageMapper;
 import com.zhl.storage.service.IStorageService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -17,6 +18,7 @@ public class StorageServiceImpl implements IStorageService {
     private StorageMapper storageMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean updateStorage(Order order) throws Exception {
         final Storage storage = storageMapper.selectStorageByProductid(order.getProductid());
         if(null == storage){

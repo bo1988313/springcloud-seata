@@ -5,6 +5,7 @@ import com.zhl.ali.account.service.IAccountService;
 import com.zhl.springcloud2020.common.entities.Order;
 import lombok.val;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -17,6 +18,7 @@ public class AccountServiceImpl implements IAccountService {
     private AccountMapper accountMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean updateAccount(Order order) throws Exception {
         final val account = accountMapper.selectAccountByUserId(order.getUserid());
         if(null == account){
@@ -24,7 +26,7 @@ public class AccountServiceImpl implements IAccountService {
         }
         account.setUsed(account.getUsed() + order.getMoney() * order.getCount());
         account.setResidue(account.getTotal() - order.getMoney() * order.getCount());
-        if(account.getResidue() < 0){
+        if(account.getUsed() > account.getTotal()){
             throw new Exception("用户余额不足");
         }
         int line = accountMapper.updateAccount(account);
