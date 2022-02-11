@@ -55,9 +55,12 @@ public class OrderControllerTest {
      */
     @Test
     public void testOrderProduct() throws Exception {
-        val order = new Order(1,1, 10, 10, 10);
+        val order = new Order(1,1, 500, 10, 10);
         final val str = JSONObject.toJSONString(order);
-        mockMvc.perform(MockMvcRequestBuilders.post("/order/product").contentType(MediaType.APPLICATION_JSON).content(str)).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
+        while(true){
+            mockMvc.perform(MockMvcRequestBuilders.post("/order/product").contentType(MediaType.APPLICATION_JSON).content(str)).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
+            Thread.sleep(1000*1);
+        }
     }
 
 

@@ -27,5 +27,27 @@ feign:
   sentinel:
     enabled: true
   ribbon:
-    ReadTimeout: 5000
-    ConnectTimeout: 5000
+    ReadTimeout: 30000
+    ConnectTimeout: 30000
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  #事务群组要与服务端nacos-config.txt中service.vgroup_mapping的后缀想对应
+  tx-service-group: ${spring.application.name}-tx-group
+  config:
+    type: nacos
+    nacos:
+      namespace: 03459be6-778d-4bf2-996d-1355ab6885cf
+      server-addr: localhost.nacos1:8848
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      namespace: 03459be6-778d-4bf2-996d-1355ab6885cf
+      server-addr: localhost.nacos1:8848
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+      application: seata-server

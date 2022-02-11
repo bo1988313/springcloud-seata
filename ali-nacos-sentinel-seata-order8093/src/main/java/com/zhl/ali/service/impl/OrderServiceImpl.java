@@ -5,6 +5,7 @@ import com.zhl.ali.service.IOrderService;
 import com.zhl.springcloud2020.common.entities.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -18,13 +19,9 @@ public class OrderServiceImpl implements IOrderService {
     private OrderMapper orderMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean commitOrder(Order order) {
-        try {
-            orderMapper.saveOrder(order);
-            return true;
-        } catch (Exception e) {
-            log.error("CommitOrder method failed: ", e);
-            return false;
-        }
+        orderMapper.saveOrder(order);
+        return true;
     }
 }
