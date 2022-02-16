@@ -9,6 +9,7 @@ import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 
 /**
  * @author Administrator
+ * git配置测试
  */
 @SpringBootApplication
 @EnableDiscoveryClient
